@@ -7,7 +7,7 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <div className="flex h-screen w-screen select-none flex-col text-slate-500 bg-white">
+    <div className="flex h-screen w-screen select-none flex-col bg-white text-slate-500 dark:bg-gray-800 dark:text-white">
       <Head>
         <title>RÖszTI Connect</title>
         <meta

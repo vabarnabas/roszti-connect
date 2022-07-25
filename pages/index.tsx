@@ -77,14 +77,14 @@ const Home: NextPage = () => {
                 connect
               </span>
             </div>
-            <div className="relative flex w-full flex-col bg-white">
+            <div className="relative flex w-full flex-col">
               <input
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value)
                 }}
                 type="email"
-                className="mb-3 w-full rounded-md bg-gray-100 py-1 px-3 outline-none"
+                className="mb-3 w-full rounded-md bg-gray-100 py-1 px-3 outline-none dark:bg-gray-700"
                 placeholder="E-mail"
               />
               <div className="">
@@ -94,7 +94,7 @@ const Home: NextPage = () => {
                     setPassword(e.target.value)
                   }}
                   type="password"
-                  className="w-full rounded-md bg-gray-100 py-1 px-3 outline-none"
+                  className="w-full rounded-md bg-gray-100 py-1 px-3 outline-none dark:bg-gray-700"
                   placeholder="Password"
                 />
                 {error && (
