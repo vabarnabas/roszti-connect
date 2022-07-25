@@ -60,9 +60,9 @@ const Home: NextPage = () => {
             action=""
             className="flex flex-col items-center space-y-3 text-sm"
           >
-            <p className="mb-1 text-4xl font-semibold flex flex-col">
+            <p className="mb-1 flex flex-col text-4xl font-semibold">
               RÖszTI
-              <span className="ml-auto text-sm font-normal -mt-2 text-soft-green">
+              <span className="ml-auto -mt-2 text-sm font-normal text-soft-green">
                 connect
               </span>
             </p>
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
                   setEmail(e.target.value)
                 }}
                 type="email"
-                className="w-full rounded-md bg-gray-100 py-1 px-3 outline-none mb-3"
+                className="mb-3 w-full rounded-md bg-gray-100 py-1 px-3 outline-none"
                 placeholder="E-mail"
               />
               <div className="">
@@ -83,7 +83,7 @@ const Home: NextPage = () => {
                     setPassword(e.target.value)
                   }}
                   type="password"
-                  className="w-full bg-gray-100 rounded-md py-1 px-3 outline-none"
+                  className="w-full rounded-md bg-gray-100 py-1 px-3 outline-none"
                   placeholder="Password"
                 />
                 {error && (
