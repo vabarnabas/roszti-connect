@@ -68,7 +68,7 @@ const Home: NextPage = () => {
             action=""
             className="flex flex-col items-center space-y-3 text-sm"
           >
-            <div className="mb-1 flex flex-col text-4xl font-semibold">
+            <div className="mb-2 flex flex-col text-4xl font-semibold">
               <p className="flex items-center">
                 <BsFillShieldLockFill className="mr-1 text-3xl text-soft-green " />
                 RÖszTI
