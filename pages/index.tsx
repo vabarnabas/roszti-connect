@@ -4,6 +4,7 @@ import { SyntheticEvent, useEffect, useState } from "react"
 import Layout from "../components/layout"
 import Spinner from "../components/spinner/spinner"
 import { useROszTIClient } from "roszti-client"
+import { BsFillShieldLockFill } from "react-icons/bs"
 
 const Home: NextPage = () => {
   const router = useRouter()
@@ -33,14 +34,21 @@ const Home: NextPage = () => {
         const user = await ROszTI.getCurrentUser({ token })
         if (!user.id) throw new Error("Invalid credentials")
         if (user) {
-          if (origin) {
-            router.push({
-              pathname: "https://open.roszti.barnabee.studio/user",
-              query: { c: user.code },
-            })
-          } else {
-            router.push({ pathname: "/connect", query: "test" })
-          }
+          //TODO: Create a solution for this.
+          // if (origin) {
+          //   router.push({
+          //     pathname: "https://open.roszti.barnabee.studio/user",
+          //     query: { c: user.code },
+          //   })
+          // }
+          // else {
+          //   router.push({ pathname: "/connect", query: "test" })
+          // }
+
+          router.push({
+            pathname: "https://open.roszti.barnabee.studio/user",
+            query: { c: user.code },
+          })
         }
       }
     } catch (err) {
@@ -60,12 +68,15 @@ const Home: NextPage = () => {
             action=""
             className="flex flex-col items-center space-y-3 text-sm"
           >
-            <p className="mb-1 flex flex-col text-4xl font-semibold">
-              RÖszTI
+            <div className="mb-1 flex flex-col text-4xl font-semibold">
+              <p className="flex items-center">
+                <BsFillShieldLockFill className="mr-1 text-3xl text-soft-green " />
+                RÖszTI
+              </p>
               <span className="ml-auto -mt-2 text-sm font-normal text-soft-green">
                 connect
               </span>
-            </p>
+            </div>
             <div className="relative flex w-full flex-col bg-white">
               <input
                 value={email}
@@ -90,7 +101,7 @@ const Home: NextPage = () => {
                   <p className="mt-1 pl-1 text-xs text-rose-500">{error}</p>
                 )}
               </div>
-              <button className="mt-3 w-full rounded-md bg-soft-green py-1 px-3 text-white outline-none">
+              <button className="mt-3 w-full rounded-md bg-soft-green py-1 px-3 text-white outline-none hover:bg-soft-green-dark">
                 Continue
               </button>
             </div>
