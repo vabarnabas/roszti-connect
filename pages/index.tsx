@@ -1,6 +1,6 @@
 import type { NextPage } from "next"
 import { useRouter } from "next/router"
-import { SyntheticEvent, useState } from "react"
+import { SyntheticEvent, useEffect, useState } from "react"
 import Layout from "../components/layout"
 import Spinner from "../components/spinner/spinner"
 import { useROszTIClient } from "roszti-client"
@@ -9,12 +9,18 @@ const Home: NextPage = () => {
   const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [userCode, setUserCode] = useState("")
   const [fetching, setFetching] = useState(false)
+  const [origin, setOrigin] = useState("")
   const [error, setError] = useState("")
   const ROszTI = useROszTIClient(process.env.NEXT_PUBLIC_API_URL || "")
 
-  const { o: origin } = router.query
+  const { o } = router.query
+
+  useEffect(() => {
+    if (o) {
+      setOrigin(Array.isArray(o) ? o[0] : o)
+    }
+  }, [o, router.isReady])
 
   const onFormSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
@@ -27,21 +33,15 @@ const Home: NextPage = () => {
         const user = await ROszTI.getCurrentUser({ token })
         if (!user.id) throw new Error("Invalid credentials")
         if (user) {
-          router.push({
-            pathname: "/user",
-            query: {
-              c: user.code,
-            },
-          })
+          if (origin) {
+            router.push({
+              pathname: "https://open.roszti.barnabee.studio/user",
+              query: { c: user.code },
+            })
+          } else {
+            router.push({ pathname: "/connect", query: "test" })
+          }
         }
-      } else if (userCode.length === 5 || userCode.length === 6) {
-        setFetching(true)
-        router.push({
-          pathname: "/user",
-          query: {
-            c: userCode,
-          },
-        })
       }
     } catch (err) {
       setError("Something went wrong.")
