@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@roszti/client": "^1.1.2",
     "next": "12.2.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "roszti-client": "^1.1.1"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "18.6.1",

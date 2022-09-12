@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import { SyntheticEvent, useEffect, useState } from "react"
 import Layout from "../components/layout"
 import Spinner from "../components/spinner/spinner"
-import { useROszTIClient } from "roszti-client"
+import { useROszTIClient } from "@roszti/client"
 import { BsFillShieldLockFill } from "react-icons/bs"
 
 const Home: NextPage = () => {
@@ -25,6 +25,7 @@ const Home: NextPage = () => {
 
   const onFormSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
+    let redirect: string
     try {
       if (email.length > 0 && password.length > 0) {
         setFetching(true)
@@ -46,7 +47,7 @@ const Home: NextPage = () => {
           // }
 
           router.push({
-            pathname: "https://open.roszti.barnabee.studio/user",
+            pathname: `${origin}/connect`,
             query: { c: user.code },
           })
         }
