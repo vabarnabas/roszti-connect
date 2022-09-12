@@ -46,9 +46,11 @@ const Home: NextPage = () => {
           //   router.push({ pathname: "/connect", query: "test" })
           // }
 
+          console.log(`${origin}/connect`)
+
           router.push({
             pathname: `${origin}/connect`,
-            query: { c: user.code },
+            query: { t: token },
           })
         }
       }
